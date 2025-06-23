@@ -4,7 +4,6 @@
 
 *.ipynb
 *.md
-*.txt
 *.log
 *.csv
 *.json
