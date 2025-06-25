@@ -4,11 +4,11 @@ from tqdm import tqdm
 import time
 import os
 
-# ========== ⚙️ Environment Setup ==========
+# ========== Environment Setup ==========
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "max_split_size_mb:128"
 
-# ========== 🚀 Load GGUF Model to GPU Only ==========
+# ========== Load GGUF Model to GPU Only ==========
 llm = Llama(
     model_path="./Model/devstralQ4_K_M.gguf",
     n_gpu_layers=-1,
@@ -20,13 +20,13 @@ llm = Llama(
     verbose=False,
     seed=42
 )
-print("✅ Model loaded fully to GPU", flush=True)
+print("Model loaded fully to GPU", flush=True)
 
-# ========== 📚 Load Dataset ==========
+# ========== Load Dataset ==========
 with open("./Dataset/codealpaca_gsm8k_30k.jsonl") as f:
     all_data = [json.loads(line) for line in f]
 
-# ========== 🔁 Resume Support ==========
+# ========== Resume Support ==========
 partial_file = "./Dataset/devstral_inference_partial.jsonl"
 already_done = 0
 
@@ -34,17 +34,17 @@ if os.path.exists(partial_file):
     with open(partial_file) as f:
         already_done = sum(1 for _ in f)
 
-print(f"🔁 Resuming from sample {already_done}", flush=True)
+print(f"Resuming from sample {already_done}", flush=True)
 dataset = all_data[already_done:]
 
-print(f"📚 Loaded {len(dataset)} samples to process", flush=True)
+print(f"Loaded {len(dataset)} samples to process", flush=True)
 
-# ========== 🔁 Inference Loop ==========
+# ========== Inference Loop ==========
 start_time = time.time()
 batch_size = 32
 backup_interval = 5  # Save full backup every 5 batches
 
-with tqdm(total=len(dataset), desc="🚀 Inference Progress", unit="samples") as pbar:
+with tqdm(total=len(dataset), desc="Inference Progress", unit="samples") as pbar:
     for i in range(0, len(dataset), batch_size):
         batch = dataset[i:i + batch_size]
         batch_results = []
@@ -72,7 +72,7 @@ with tqdm(total=len(dataset), desc="🚀 Inference Progress", unit="samples") as
                 "model_output": output
             })
 
-        # 💾 Save every batch with failsafe
+        # Save every batch with failsafe
         try:
             with open(partial_file, "a") as f:
                 for r in batch_results:
@@ -83,24 +83,24 @@ with tqdm(total=len(dataset), desc="🚀 Inference Progress", unit="samples") as
                 with open(backup_file, "w") as bf:
                     for r in batch_results:
                         bf.write(json.dumps(r) + "\n")
-                print(f"⚠️ Error saving to main file: {save_error}. Backup saved to {backup_file}", flush=True)
+                print(f"Error saving to main file: {save_error}. Backup saved to {backup_file}", flush=True)
             except Exception as backup_error:
-                print(f"❌ CRITICAL: Failed to save batch results: {backup_error}", flush=True)
+                print(f"CRITICAL: Failed to save batch results: {backup_error}", flush=True)
 
-        # 📑 Periodic backup
+        # Periodic backup
         if (i // batch_size) % backup_interval == 0 and i > 0:
             backup_file = f"./Dataset/devstral_inference_backup_{i}.jsonl"
             try:
                 with open(backup_file, "w") as f:
                     with open(partial_file, "r") as source:
                         f.write(source.read())
-                print(f"📑 Periodic backup saved: {backup_file}", flush=True)
+                print(f"Periodic backup saved: {backup_file}", flush=True)
             except Exception as e:
-                print(f"⚠️ Failed to create periodic backup: {e}", flush=True)
+                print(f"Failed to create periodic backup: {e}", flush=True)
 
         pbar.update(len(batch_results))
 
-        # ⏱ ETA display
+        # ETA display
         elapsed = time.time() - start_time
         processed = i + len(batch_results)
         avg_time = elapsed / processed if processed > 0 else 0
@@ -110,8 +110,8 @@ with tqdm(total=len(dataset), desc="🚀 Inference Progress", unit="samples") as
             'ETA': f"{remaining / 60:.1f} min"
         })
 
-# ========== ✅ Completion ==========
+# ========== Completion ==========
 elapsed = time.time() - start_time
-print(f"\n✅ Inference completed in {elapsed / 60:.2f} minutes", flush=True)
-print(f"🧮 Average time per sample: {elapsed / len(dataset):.2f} seconds", flush=True)
-print(f"💾 Results saved to: {partial_file}", flush=True)
+print(f"\nInference completed in {elapsed / 60:.2f} minutes", flush=True)
+print(f"Average time per sample: {elapsed / len(dataset):.2f} seconds", flush=True)
+print(f"Results saved to: {partial_file}", flush=True)
