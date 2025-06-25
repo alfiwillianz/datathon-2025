@@ -20,8 +20,7 @@ llm = Llama(
     verbose=False,
     seed=42
 )
-
-print("✅ Model loaded fully to GPU")
+print("✅ Model loaded fully to GPU", flush=True)
 
 # ========== 📚 Load Dataset ==========
 with open("./Dataset/codealpaca_gsm8k_30k.jsonl") as f:
@@ -35,15 +34,15 @@ if os.path.exists(partial_file):
     with open(partial_file) as f:
         already_done = sum(1 for _ in f)
 
-print(f"🔁 Resuming from sample {already_done}")
+print(f"🔁 Resuming from sample {already_done}", flush=True)
 dataset = all_data[already_done:]
 
-print(f"📚 Loaded {len(dataset)} samples to process")
+print(f"📚 Loaded {len(dataset)} samples to process", flush=True)
 
 # ========== 🔁 Inference Loop ==========
 start_time = time.time()
 batch_size = 32
-backup_interval = 5  # Save backup every 5 batches
+backup_interval = 5  # Save full backup every 5 batches
 
 with tqdm(total=len(dataset), desc="🚀 Inference Progress", unit="samples") as pbar:
     for i in range(0, len(dataset), batch_size):
@@ -64,24 +63,13 @@ with tqdm(total=len(dataset), desc="🚀 Inference Progress", unit="samples") as
                     top_p=0.9,
                     top_k=40
                 )
-                output = response["choices"][0]["text"].strip()
-                
-                # Extract logits info if available
-                logits_info = None
-                if "choices" in response and len(response["choices"]) > 0:
-                    if "logits" in response["choices"][0]:
-                        logits_info = response["choices"][0]["logits"]
-                    elif "logprobs" in response["choices"][0]:
-                        logits_info = response["choices"][0]["logprobs"]
-                
+                output = response.get("choices", [{}])[0].get("text", "").strip()
             except Exception as e:
                 output = f"ERROR: {str(e)[:100]}"
-                logits_info = None
 
             batch_results.append({
                 "instruction": instruction,
-                "model_output": output,
-                "logits_info": logits_info
+                "model_output": output
             })
 
         # 💾 Save every batch with failsafe
@@ -90,26 +78,25 @@ with tqdm(total=len(dataset), desc="🚀 Inference Progress", unit="samples") as
                 for r in batch_results:
                     f.write(json.dumps(r) + "\n")
         except Exception as save_error:
-            # Failsafe: Try to write to a backup file
             backup_file = f"./Dataset/devstral_inference_backup_{int(time.time())}.jsonl"
             try:
                 with open(backup_file, "w") as bf:
                     for r in batch_results:
                         bf.write(json.dumps(r) + "\n")
-                print(f"⚠️ Error saving to main file: {save_error}. Backup saved to {backup_file}")
+                print(f"⚠️ Error saving to main file: {save_error}. Backup saved to {backup_file}", flush=True)
             except Exception as backup_error:
-                print(f"❌ CRITICAL: Failed to save batch results: {backup_error}")
-        
-        # Create periodic backup
+                print(f"❌ CRITICAL: Failed to save batch results: {backup_error}", flush=True)
+
+        # 📑 Periodic backup
         if (i // batch_size) % backup_interval == 0 and i > 0:
             backup_file = f"./Dataset/devstral_inference_backup_{i}.jsonl"
             try:
                 with open(backup_file, "w") as f:
                     with open(partial_file, "r") as source:
                         f.write(source.read())
-                print(f"📑 Periodic backup saved: {backup_file}")
+                print(f"📑 Periodic backup saved: {backup_file}", flush=True)
             except Exception as e:
-                print(f"⚠️ Failed to create periodic backup: {e}")
+                print(f"⚠️ Failed to create periodic backup: {e}", flush=True)
 
         pbar.update(len(batch_results))
 
@@ -125,6 +112,6 @@ with tqdm(total=len(dataset), desc="🚀 Inference Progress", unit="samples") as
 
 # ========== ✅ Completion ==========
 elapsed = time.time() - start_time
-print(f"✅ Inference completed in {elapsed / 60:.2f} minutes")
-print(f"🧮 Average time per sample: {elapsed / len(dataset):.2f} seconds")
-print(f"💾 Results saved to: {partial_file}")
+print(f"\n✅ Inference completed in {elapsed / 60:.2f} minutes", flush=True)
+print(f"🧮 Average time per sample: {elapsed / len(dataset):.2f} seconds", flush=True)
+print(f"💾 Results saved to: {partial_file}", flush=True)
