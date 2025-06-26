@@ -48,7 +48,7 @@
         <mxCell id="cVk_4BceJhJT_HfghTbr-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="cVk_4BceJhJT_HfghTbr-13" target="cVk_4BceJhJT_HfghTbr-20" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="cVk_4BceJhJT_HfghTbr-13" value="Pelatihan Model Mistral-7b di GPU" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="cVk_4BceJhJT_HfghTbr-13" value="Pelatihan Model Qwen2.5-1.5 di GPU" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="240" y="480" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="cVk_4BceJhJT_HfghTbr-26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="cVk_4BceJhJT_HfghTbr-20" target="cVk_4BceJhJT_HfghTbr-25" edge="1">
