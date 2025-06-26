@@ -1,72 +1,67 @@
-from huggingface_hub import hf_hub_download
+from huggingface_hub import snapshot_download
+from pathlib import Path
+from dotenv import load_dotenv
 import os
 
-def download_model(repo_id, filename, cache_dir=None):
-    try:
-        print(f" Downloading {filename} from {repo_id}...")
-        model_path = hf_hub_download(
-            repo_id=repo_id,
-            filename=filename,
-            cache_dir=cache_dir
-        )
-        print(f"Downloaded to: {model_path}\n")
-        return model_path
-    except Exception as e:
-        print(f"Failed to download {filename} from {repo_id}: {e}")
-        return None
+# Load environment variables
+load_dotenv()
+hf_token = os.getenv("HF_TOKEN")
 
-def download_student_models():
-    # === Qwen 1.5B ===
-    qwen_files = [
-        "model.safetensors",
+path = "./StudentModels/"
+
+# ==============================
+# Qwen2.5-7B
+# ==============================
+qwen_7b_path = Path(path).joinpath('qwen_models', '2.5-7B')
+qwen_7b_path.mkdir(parents=True, exist_ok=True)
+
+snapshot_download(
+    repo_id="Qwen/Qwen2.5-7B",
+    allow_patterns=[
         "config.json",
+        "generation_config.json",
+        "merges.txt",
         "tokenizer.json",
         "tokenizer_config.json",
         "vocab.json",
-        "merges.txt"
-    ]
-
-    for file in qwen_files:
-        download_model(
-            repo_id="Qwen/Qwen2.5-1.5B",
-            filename=file,
-            cache_dir="./StudentModels/Qwen"
-        )
-
-    # === Qwen 0.5B ===
-    qwen_05b_files = [
-        "model.safetensors",
-        "config.json",
-        "tokenizer.json",
-        "tokenizer_config.json",
-        "vocab.json",
-        "merges.txt"
-    ]
-
-    for file in qwen_05b_files:
-        download_model(
-            repo_id="Qwen/Qwen2.5-0.5B",
-            filename=file,
-            cache_dir="./StudentModels/Qwen0.5B"
-        )
-
-    # === Mistral 7B Instruct ===
-    mistral_files = [
-        "model-00001-of-00003.safetensors",
-        "model-00002-of-00003.safetensors",
-        "model-00003-of-00003.safetensors",
         "model.safetensors.index.json",
-        "config.json",
-        "tokenizer.model",
-        "tokenizer_config.json"
-    ]
+        "model-00001-of-00004.safetensors",
+        "model-00002-of-00004.safetensors",
+        "model-00003-of-00004.safetensors",
+        "model-00004-of-00004.safetensors"
+    ],
+    local_dir=qwen_7b_path,
+    token=hf_token
+)
 
-    for file in mistral_files:
-        download_model(
-            repo_id="mistralai/Mistral-7B-Instruct-v0.3",
-            filename=file,
-            cache_dir="./StudentModels/Mistral"
-        )
+# ==============================
+# Qwen2.5-1.5B
+# ==============================
+# qwen_15b_path = Path(path).joinpath('qwen_models', '2.5-1.5B')
+# qwen_15b_path.mkdir(parents=True, exist_ok=True)
 
-if __name__ == "__main__":
-    download_student_models()
+# snapshot_download(
+#     repo_id="Qwen/Qwen2.5-1.5B",
+#     allow_patterns=[
+#         "model.safetensors", "config.json", "tokenizer.json",
+#         "tokenizer_config.json", "vocab.json", "merges.txt"
+#     ],
+#     local_dir=qwen_15b_path,
+#     token=hf_token
+# )
+
+# ==============================
+# Qwen2.5-0.5B
+# ==============================
+# qwen_05b_path = Path(path).joinpath('qwen_models', '2.5-0.5B')
+# qwen_05b_path.mkdir(parents=True, exist_ok=True)
+
+# snapshot_download(
+#     repo_id="Qwen/Qwen2.5-0.5B",
+#     allow_patterns=[
+#         "model.safetensors", "config.json", "tokenizer.json",
+#         "tokenizer_config.json", "vocab.json", "merges.txt"
+#     ],
+#     local_dir=qwen_05b_path,
+#     token=hf_token
+# )

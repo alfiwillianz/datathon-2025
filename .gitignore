@@ -195,3 +195,5 @@ cython_debug/
 
 Model/
 StudentModels/
+qwen1.5b-lora/
+qwen2.5-7b-qlora/
