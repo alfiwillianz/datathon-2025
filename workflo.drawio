@@ -28,57 +28,62 @@
         <mxCell id="cVk_4BceJhJT_HfghTbr-7" value="Pembagian Subset Data (Train, Test, Validation)" style="whiteSpace=wrap;html=1;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="640" y="310" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="cVk_4BceJhJT_HfghTbr-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="cVk_4BceJhJT_HfghTbr-11" target="cVk_4BceJhJT_HfghTbr-20" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="200" y="430" />
-              <mxPoint x="200" y="470" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="cVk_4BceJhJT_HfghTbr-11" value="Pelatihan Model Qwen2.5-0.7b&lt;br&gt;di CPU" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="340" y="400" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="cVk_4BceJhJT_HfghTbr-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="cVk_4BceJhJT_HfghTbr-12" target="cVk_4BceJhJT_HfghTbr-13" edge="1">
+        <mxCell id="Kaopdvo-rYEwLS7DeMfb-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="cVk_4BceJhJT_HfghTbr-11" target="Kaopdvo-rYEwLS7DeMfb-4">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="cVk_4BceJhJT_HfghTbr-12" value="Pelatihan Model Qwen2.5-1.5b&lt;br&gt;di GPU" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="Kaopdvo-rYEwLS7DeMfb-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="cVk_4BceJhJT_HfghTbr-11" target="Kaopdvo-rYEwLS7DeMfb-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cVk_4BceJhJT_HfghTbr-11" value="Pelatihan Model Qwen2.5-0.5b" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="440" y="410" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Kaopdvo-rYEwLS7DeMfb-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="cVk_4BceJhJT_HfghTbr-12" target="Kaopdvo-rYEwLS7DeMfb-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cVk_4BceJhJT_HfghTbr-12" value="Pelatihan Model Qwen2.5-1.5b" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="440" y="480" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="cVk_4BceJhJT_HfghTbr-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="cVk_4BceJhJT_HfghTbr-13" target="cVk_4BceJhJT_HfghTbr-20" edge="1">
+        <mxCell id="Kaopdvo-rYEwLS7DeMfb-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="cVk_4BceJhJT_HfghTbr-13" target="Kaopdvo-rYEwLS7DeMfb-7">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="cVk_4BceJhJT_HfghTbr-13" value="Pelatihan Model Qwen2.5-1.5 di GPU" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="240" y="480" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="cVk_4BceJhJT_HfghTbr-26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="cVk_4BceJhJT_HfghTbr-20" target="cVk_4BceJhJT_HfghTbr-25" edge="1">
+        <mxCell id="Kaopdvo-rYEwLS7DeMfb-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="cVk_4BceJhJT_HfghTbr-13" target="Kaopdvo-rYEwLS7DeMfb-4">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="cVk_4BceJhJT_HfghTbr-20" value="Evaluasi Model terhadap subset Test" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="40" y="440" width="120" height="60" as="geometry" />
+        <mxCell id="cVk_4BceJhJT_HfghTbr-13" value="Pelatihan Model Qwen2.5-7b" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="440" y="550" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="cVk_4BceJhJT_HfghTbr-28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="cVk_4BceJhJT_HfghTbr-25" target="cVk_4BceJhJT_HfghTbr-27" edge="1">
+        <mxCell id="Kaopdvo-rYEwLS7DeMfb-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="cVk_4BceJhJT_HfghTbr-29" target="cVk_4BceJhJT_HfghTbr-11">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="cVk_4BceJhJT_HfghTbr-25" value="Analisis Hasil" style="whiteSpace=wrap;html=1;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="40" y="580" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="cVk_4BceJhJT_HfghTbr-27" value="Selesai" style="whiteSpace=wrap;html=1;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="640" y="580" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="cVk_4BceJhJT_HfghTbr-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="cVk_4BceJhJT_HfghTbr-29" target="cVk_4BceJhJT_HfghTbr-12" edge="1">
+        <mxCell id="Kaopdvo-rYEwLS7DeMfb-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="cVk_4BceJhJT_HfghTbr-29" target="cVk_4BceJhJT_HfghTbr-12">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="cVk_4BceJhJT_HfghTbr-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="cVk_4BceJhJT_HfghTbr-29" target="cVk_4BceJhJT_HfghTbr-11" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="600" y="480" />
-              <mxPoint x="600" y="430" />
-            </Array>
-          </mxGeometry>
+        <mxCell id="Kaopdvo-rYEwLS7DeMfb-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="cVk_4BceJhJT_HfghTbr-29" target="cVk_4BceJhJT_HfghTbr-13">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="cVk_4BceJhJT_HfghTbr-29" value="Persiapan Model Student" style="whiteSpace=wrap;html=1;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="640" y="450" width="120" height="60" as="geometry" />
+          <mxGeometry x="640" y="480" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Kaopdvo-rYEwLS7DeMfb-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Kaopdvo-rYEwLS7DeMfb-4" target="Kaopdvo-rYEwLS7DeMfb-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Kaopdvo-rYEwLS7DeMfb-4" value="Evaluasi ExactMatch GMS8K" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="240" y="450" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Kaopdvo-rYEwLS7DeMfb-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Kaopdvo-rYEwLS7DeMfb-7" target="Kaopdvo-rYEwLS7DeMfb-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Kaopdvo-rYEwLS7DeMfb-7" value="Evaluasi LLM-as-a-Judge CodeAlpaca" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="240" y="530" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Kaopdvo-rYEwLS7DeMfb-16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Kaopdvo-rYEwLS7DeMfb-12" target="Kaopdvo-rYEwLS7DeMfb-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Kaopdvo-rYEwLS7DeMfb-12" value="Analisis Hasil" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="420" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Kaopdvo-rYEwLS7DeMfb-15" value="Selesai" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="550" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
