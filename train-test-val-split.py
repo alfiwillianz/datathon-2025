@@ -177,7 +177,7 @@ def categorize_and_split_combined_jsonl(
         print(f"Sampel 'unmatched' (tidak cocok dengan dataset asli): {unmatched_count}")
 
 if __name__ == "__main__":
-    input_inference_jsonl = "devstral_inference_cleaned.jsonl" # Ganti dengan path file inferensi Anda
+    input_inference_jsonl = "Dataset/devstral_inference.jsonl" # Ganti dengan path file inferensi Anda
     output_base_path = "./Dataset/categorized_split_data_stratified" # Nama base path baru
 
     categorize_and_split_combined_jsonl(

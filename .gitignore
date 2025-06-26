@@ -193,5 +193,5 @@ cython_debug/
 .cursorignore
 .cursorindexingignore
 
-*.gguf
-Dataset/devstral_inference_backup*
+Model/
+StudentModels/
