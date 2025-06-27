@@ -37,31 +37,31 @@ snapshot_download(
 # ==============================
 # Qwen2.5-1.5B
 # ==============================
-# qwen_15b_path = Path(path).joinpath('qwen_models', '2.5-1.5B')
-# qwen_15b_path.mkdir(parents=True, exist_ok=True)
+qwen_15b_path = Path(path).joinpath('qwen_models', '2.5-1.5B')
+qwen_15b_path.mkdir(parents=True, exist_ok=True)
 
-# snapshot_download(
-#     repo_id="Qwen/Qwen2.5-1.5B",
-#     allow_patterns=[
-#         "model.safetensors", "config.json", "tokenizer.json",
-#         "tokenizer_config.json", "vocab.json", "merges.txt"
-#     ],
-#     local_dir=qwen_15b_path,
-#     token=hf_token
-# )
+snapshot_download(
+    repo_id="Qwen/Qwen2.5-1.5B",
+    allow_patterns=[
+        "model.safetensors", "config.json", "tokenizer.json",
+        "tokenizer_config.json", "vocab.json", "merges.txt"
+    ],
+    local_dir=qwen_15b_path,
+    token=hf_token
+)
 
 # ==============================
 # Qwen2.5-0.5B
 # ==============================
-# qwen_05b_path = Path(path).joinpath('qwen_models', '2.5-0.5B')
-# qwen_05b_path.mkdir(parents=True, exist_ok=True)
+qwen_05b_path = Path(path).joinpath('qwen_models', '2.5-0.5B')
+qwen_05b_path.mkdir(parents=True, exist_ok=True)
 
-# snapshot_download(
-#     repo_id="Qwen/Qwen2.5-0.5B",
-#     allow_patterns=[
-#         "model.safetensors", "config.json", "tokenizer.json",
-#         "tokenizer_config.json", "vocab.json", "merges.txt"
-#     ],
-#     local_dir=qwen_05b_path,
-#     token=hf_token
-# )
+snapshot_download(
+    repo_id="Qwen/Qwen2.5-0.5B",
+    allow_patterns=[
+        "model.safetensors", "config.json", "tokenizer.json",
+        "tokenizer_config.json", "vocab.json", "merges.txt"
+    ],
+    local_dir=qwen_05b_path,
+    token=hf_token
+)
