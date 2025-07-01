@@ -23,11 +23,11 @@ llm = Llama(
 print("Model loaded fully to GPU", flush=True)
 
 # ========== Load Dataset ==========
-with open("Dataset/codealpaca_gsm8k_30k.jsonl") as f:
+with open("Dataset/Prep/codealpaca_gsm8k_30k.jsonl") as f:
     all_data = [json.loads(line) for line in f]
 
 # ========== Resume Support ==========
-partial_file = "Dataset/devstral_inference_partial.jsonl"  # Updated path
+partial_file = "Dataset/Partial/devstral_inference_partial.jsonl"  # Updated path
 already_done = 0
 
 if os.path.exists(partial_file):
@@ -78,7 +78,7 @@ with tqdm(total=len(dataset), desc="Inference Progress", unit="samples") as pbar
                 for r in batch_results:
                     f.write(json.dumps(r) + "\n")
         except Exception as save_error:
-            backup_file = f"./Dataset/devstral_inference_backup_{int(time.time())}.jsonl"
+            backup_file = f"./Dataset/Backup/devstral_inference_backup_{int(time.time())}.jsonl"
             try:
                 with open(backup_file, "w") as bf:
                     for r in batch_results:
@@ -89,7 +89,7 @@ with tqdm(total=len(dataset), desc="Inference Progress", unit="samples") as pbar
 
         # Periodic backup
         if (i // batch_size) % backup_interval == 0 and i > 0:
-            backup_file = f"./Dataset/devstral_inference_backup_{i}.jsonl"
+            backup_file = f"./Dataset/Backup/evstral_inference_backup_{i}.jsonl"
             try:
                 with open(backup_file, "w") as f:
                     with open(partial_file, "r") as source:

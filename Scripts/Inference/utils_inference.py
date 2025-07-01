@@ -208,3 +208,62 @@ def process_enhanced_batch(model, tokenizer, instructions, config):
             batch_results.append(f"ERROR: {str(e)[:50]}")
     
     return batch_results
+
+def process_base_model_batch(model, tokenizer, instructions, config):
+    """Process batch for base models without special system prompts"""
+    batch_results = []
+    
+    # Simple instruction format for base models
+    prompts = [f"### Instruction:\n{instruction}\n\n### Response:\n" 
+              for instruction in instructions]
+    
+    try:
+        # Tokenize batch with padding
+        inputs = tokenizer(
+            prompts,
+            return_tensors="pt",
+            truncation=True,
+            max_length=512,
+            padding=True,
+            add_special_tokens=True
+        )
+        inputs = {k: v.to(model.device) for k, v in inputs.items()}
+        
+        # Generate with optimized settings
+        with torch.no_grad():
+            with torch.autocast(device_type='cuda', dtype=torch.bfloat16):
+                outputs = model.generate(
+                    **inputs,
+                    max_new_tokens=config["max_new_tokens"],
+                    temperature=config["temperature"],
+                    do_sample=True,
+                    top_p=config["top_p"],
+                    top_k=40,
+                    repetition_penalty=1.03,
+                    pad_token_id=tokenizer.pad_token_id,
+                    eos_token_id=tokenizer.eos_token_id,
+                    use_cache=True,
+                    num_beams=1
+                )
+        
+        # Decode responses
+        for i, output in enumerate(outputs):
+            response = tokenizer.decode(
+                output[inputs['input_ids'][i].shape[0]:], 
+                skip_special_tokens=True
+            )
+            
+            # Clean response
+            output_text = response.strip()
+            for stop_seq in ["###", "</s>", "### Instruction:", "### Response:"]:
+                if stop_seq in output_text:
+                    output_text = output_text.split(stop_seq)[0].strip()
+            
+            batch_results.append(output_text)
+    
+    except Exception as e:
+        # Fallback to individual processing
+        for instruction in instructions:
+            batch_results.append(f"ERROR: {str(e)[:50]}")
+    
+    return batch_results

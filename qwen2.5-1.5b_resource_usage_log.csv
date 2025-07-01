@@ -1,1 +1,0 @@
-timestamp,model_name,stage,batch_number,processed_instructions,cpu_percent,ram_percent,ram_used_gb,ram_total_gb,gpu_util_percent,gpu_memory_used_gb,gpu_memory_total_gb,gpu_memory_percent,throughput_instr_per_sec,elapsed_time_sec
