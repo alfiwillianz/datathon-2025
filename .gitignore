@@ -195,8 +195,26 @@ cython_debug/
 
 Model/
 StudentModels/
-qwen1.5b-lora/
-qwen2.5-7b-qlora/
-qwen2.5-0.5b-lora/
+StudentModels/Adapters/qwen2.5-1.5b-lora/
+StudentModels/Adapters/qwen2.5-7b-qlora/
+StudentModels/Adapters/qwen2.5-0.5b-lora/
+
+# Dataset files
+Dataset/
+*.jsonl
+*.json
+
+# Training artifacts
+*.png
+*.log
+wandb/
+runs/
+checkpoints/
+*.pt
+*.pth
+*.safetensors
+
+# Model verification files
+model_verification_*.txt
 
 appendix*
