@@ -64,3 +64,5 @@ tf-keras==2.15.0
 optuna==4.4.0
 lightgbm
 xgboost
+psutil
+subprocess32; python_version<'3.5'

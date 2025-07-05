@@ -1,0 +1,3 @@
+Semiqwenn-7b : https://huggingface.co/alfiwillianz/SemiQwenn-7b
+Semiqwenn-1.5b : https://huggingface.co/alfiwillianz/SemiQwenn-1.5b
+Semiqwenn-0.5b : https://huggingface.co/alfiwillianz/SemiQwenn-0.5b
